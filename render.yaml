@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: clothing-store-backend
+    env: python
+    plan: free
+    branch: main
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python manage.py migrate && python manage.py populate_products && python manage.py collectstatic --noinput
+    startCommand: gunicorn mysite.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        value: xvDQS7Jq68RETMwNrvJFfSRe6EhjB92AzJ5KPSLaU1d-ifIt9lbC0dFtWvEJZNxSR0w
+      - key: DEBUG
+        value: false
+      - key: ALLOWED_HOSTS
+        value: "*"
+
+  - type: static_site
+    name: clothing-store-frontend
+    env: static
+    plan: free
+    branch: main
+    staticPublishPath: frontend
+

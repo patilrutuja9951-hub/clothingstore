@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MH24 Collection | Streetwear</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header>
+
+    <div class="navbar">
+
+      <!-- LOGO -->
+      <div class="nav-logo">
+        <a href="index.html" class="logo-link">
+          <div class="logo"></div>
+        </a>
+      </div>
+
+      <!-- LOCATION -->
+      <div class="nav-address">
+
+        <p class="add-first">Deliver to</p>
+
+        <div class="add-icon">
+          <i class="fa-solid fa-location-dot"></i>
+          <p class="add-second">INDIA</p>
+        </div>
+
+      </div>
+
+      <!-- SEARCH -->
+      <div class="nav-search">
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search MH24Collection"
+          class="search-input">
+
+        <button
+          type="button"
+          class="search-icon"
+          onclick="goToSearch(event)">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+        </button>
+
+      </div>
+
+      <!-- SIGN IN -->
+      <div class="nav-signin border">
+
+        <a href="signin.html">
+          <p><span>Hello, Sign in</span></p>
+        </a>
+
+      </div>
+
+      <!-- SHOP -->
+      <div class="nav-favourites border">
+
+        <a href="products.html">
+          Shop
+        </a>
+
+      </div>
+
+      <!-- FAVOURITES -->
+      <div class="nav-favourites border">
+
+        <a href="favourites.html">
+
+          <i class="fa-solid fa-heart"></i>
+
+          (<span id="fav-count">0</span>)
+
+        </a>
+
+      </div>
+
+      <!-- CART -->
+      <div class="nav-cart border">
+
+        <a href="cart.html">
+
+          <i class="fa-solid fa-cart-shopping"></i>
+
+          Cart (<span id="cart-count">0</span>)
+
+        </a>
+
+      </div>
+
+      <!-- PROFILE -->
+      <div class="nav-profile border">
+
+        <a href="profile.html">
+
+          <i class="fa-solid fa-user"></i>
+
+        </a>
+
+      </div>
+
+      <!-- HOME -->
+      <div class="top-btn">
+
+        <a href="index.html">
+
+          <i class="fa-solid fa-house"></i>
+
+        </a>
+
+      </div>
+
+      <!-- LOGOUT -->
+      <div class="nav-logout">
+
+        <span id="username"></span>
+
+        <button type="button" onclick="logout()">
+
+          <i class="fa-solid fa-right-from-bracket"></i>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= PAGE CONTENT ================= -->
+
+  <main class="page-content">
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero-section">
+
+      <div class="slider">
+
+        <img src="images/HERO.FINAL1.png"
+          class="slide active"
+          alt="Hero Banner">
+
+        <img src="images/heroslide1.png"
+          class="slide"
+          alt="Streetwear Banner">
+
+        <img src="images/herodenim.png"
+          class="slide"
+          alt="Denim Banner">
+
+      </div>
+
+      <div class="hero-msg">
+        SHOP YOUR EVERYDAY FIT
+      </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="categories">
+
+      <h2>DRIP BY CATEGORY</h2>
+
+      <div class="category-container">
+
+        <!-- MEN -->
+        <a href="men.html?category=Men" class="category-card">
+
+          <img src="images/men.png" alt="Men">
+
+          <div class="overlay">
+
+            <h3>MEN</h3>
+            <p>Street Essentials</p>
+
+          </div>
+
+        </a>
+
+        <!-- WOMEN -->
+        <a href="women.html?category=Women" class="category-card">
+
+          <img src="images/women.png" alt="Women">
+
+          <div class="overlay">
+
+            <h3>WOMEN</h3>
+            <p>Soft but Savage</p>
+
+          </div>
+
+        </a>
+
+        <!-- OVERSIZED -->
+        <a href="oversized.html?category=Oversized" class="category-card">
+
+          <img src="images/oversized.png" alt="Oversized">
+
+          <div class="overlay">
+
+            <h3>OVERSIZED</h3>
+            <p>Chill Fits Only</p>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= BEST SELLERS ================= -->
+
+    <section class="featured">
+
+      <h2 class="section-title">
+        BEST SELLERS
+      </h2>
+
+      <div class="product-container" id="product-container">
+
+        <!-- PRODUCTS LOAD HERE -->
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-section">
+      <h3>MH24 COLLECTION</h3>
+      <p>
+        Premium Gen-Z streetwear inspired by urban culture,
+        oversized fashion, and bold individuality.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="favourites.html">Favourites</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+
+    <!-- CUSTOMER -->
+    <div class="footer-section">
+      <h3>Customer Support</h3>
+
+      <ul>
+        <li><a href="track-order.html">Track Order</a></li>
+        <li><a href="add_review.html">RATE US</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+
+      <p>Email: mh24collection@gmail.com</p>
+      <p>Phone: +91 9326598416</p>
+      <p>Mumbai, India</p>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL LINKS -->
+  <div class="footer-social-links">
+
+    <a href="#">
+      <i class="fab fa-instagram"></i>
+      Instagram
+    </a>
+
+    <a href="#">
+      <i class="fab fa-facebook-f"></i>
+      Facebook
+    </a>
+
+    <a href="#">
+      <i class="fab fa-x-twitter"></i>
+      Twitter
+    </a>
+
+    <a href="#">
+      <i class="fab fa-youtube"></i>
+      YouTube
+    </a>
+
+  </div>
+
+   <div class="footer-bottom">
+       <p>© 2026 MH24 Collection. All Rights Reserved.</p>
+
+       <p class="developer-credit">
+          Designed & Developed by <strong>Rutuja Patil</strong>
+       </p>
+  </div>
+      
+
+
+   
+</footer>
+
+
+  <!-- ================= SCRIPTS ================= -->
+
+  <script src="js/products.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/favourites.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/slider.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+</body>
+
+</html>

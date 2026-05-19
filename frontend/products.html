@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products | MH24 Collection</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="with-footer">
+
+<!-- ================= NAVBAR ================= -->
+<header>
+  <div class="navbar">
+
+    <!-- LOGO -->
+    <div class="nav-logo">
+      <a href="index.html">
+        <div class="logo"></div>
+      </a>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="nav-search">
+      <input type="text" id="searchInput" placeholder="Search products..." class="search-input">
+      <button type="button" class="search-icon" onclick="goToSearch(event)" aria-label="Search products" title="Search products">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
+    <!-- SHOP -->
+    <div class="nav-links">
+      <a href="products.html">Shop</a>
+      <a href="favourites.html">
+        <i class="fa-solid fa-heart"></i>
+        (<span id="fav-count">0</span>)
+      </a>
+      <a href="cart.html">
+        <i class="fa-solid fa-cart-shopping"></i>
+        (<span id="cart-count">0</span>)
+      </a>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ================= PRODUCTS SECTION ================= -->
+
+<section class="featured">
+
+  <h2 class="section-title">All Products</h2>
+
+  <!-- PRODUCTS WILL LOAD HERE -->
+  <div class="product-container" id="product-container"></div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+  <p>© 2026 MH24Collection. All Rights Reserved.</p>
+</footer>
+
+
+<!-- ================= SCRIPTS ================= -->
+
+<script src="js/products.js" defer></script>
+<script src="js/cart.js" defer></script>
+<script src="js/favourites.js" defer></script>
+<script src="js/search.js" defer></script>
+<script src="js/main.js" defer></script>
+
+</body>
+</html>
+
+<!-- MOBILE MENUBAR -->
+<nav class="mobile-menubar" aria-label="Mobile menu">
+  <a href="index.html" class="mm-item" title="Home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
+  <a href="products.html" class="mm-item" title="Shop" aria-label="Shop"><i class="fa-solid fa-store"></i></a>
+  <a href="favourites.html" class="mm-item" title="Favourites" aria-label="Favourites"><i class="fa-solid fa-heart"></i><span class="mm-badge" id="mm-fav-count">0</span></a>
+  <a href="cart.html" class="mm-item" title="Cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="mm-badge" id="mm-cart-count">0</span></a>
+  <a href="profile.html" class="mm-item" title="Profile" aria-label="Profile"><i class="fa-solid fa-user"></i></a>
+</nav>

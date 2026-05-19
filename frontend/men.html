@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Men | MH24 Collection</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="with-footer">
+ 
+  <header class="navbar">
+
+    <div class="nav-left">
+      <h2 class="logo"></h2>
+    </div>
+
+    <div class="nav-center">
+      <a href="index.html" class="border">Home</a>
+    </div>
+
+    <div class="nav-right">
+
+      <a href="favourites.html" class="nav-favourites border">
+        <i class="fa-solid fa-heart"></i>
+        <span id="fav-count">0</span>
+      </a>
+
+      <a href="cart.html" class="nav-cart border">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+      </a>
+
+      <span id="username"></span>
+
+      <a href="#" onclick="logout()" class="border">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+
+    </div>
+
+  </header>
+
+  <section class="category-hero">
+    <h1>MEN COLLECTION</h1>
+    <p>Street Essentials. Everyday Drip.</p>
+  </section>
+
+  <section class="products">
+    <div class="product-grid" id="product-container">
+      <!-- Products will load dynamically -->
+    </div>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (!params.get("category")) {
+      window.location.search = "?category=Men";
+    }
+  </script>
+
+  <script src="js/products.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/favourites.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>© 2026 MH24Collection. All rights reserved.</p>
+    </div>
+  </footer>
+
+<!-- MOBILE MENUBAR -->
+<nav class="mobile-menubar" aria-label="Mobile menu">
+  <a href="index.html" class="mm-item" title="Home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
+  <a href="products.html" class="mm-item" title="Shop" aria-label="Shop"><i class="fa-solid fa-store"></i></a>
+  <a href="favourites.html" class="mm-item" title="Favourites" aria-label="Favourites"><i class="fa-solid fa-heart"></i><span class="mm-badge" id="mm-fav-count">0</span></a>
+  <a href="cart.html" class="mm-item" title="Cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="mm-badge" id="mm-cart-count">0</span></a>
+  <a href="profile.html" class="mm-item" title="Profile" aria-label="Profile"><i class="fa-solid fa-user"></i></a>
+</nav>
+
+</body>
+
+</html>

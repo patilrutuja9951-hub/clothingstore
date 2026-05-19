@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Product Detail | MH24</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="with-footer">
+
+    <header class="navbar">
+        <a href="index.html">Home</a>
+
+        <div>
+            <a href="favourites.html">
+                <i class="fa-solid fa-heart"></i>
+                <span id="fav-count">0</span>
+            </a>
+
+            <a href="cart.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="product-detail-page">
+
+        <div class="detail-left">
+            <img id="detail-img" src="" alt="Product image" width="300">
+        </div>
+
+        <div class="detail-right">
+
+            <h2 id="detail-name">Product Name</h2>
+            <h3 id="detail-price">₹0</h3>
+            <p id="detail-desc">Product description will appear here.</p>
+
+            <div class="size-section">
+                <p>Select Size:</p>
+
+                <div class="sizes">
+                    <span onclick="selectSize(this)">S</span>
+                    <span onclick="selectSize(this)">M</span>
+                    <span onclick="selectSize(this)">L</span>
+                    <span onclick="selectSize(this)">XL</span>
+                </div>
+            </div>
+
+            <div class="qty-section">
+                <button onclick="changeQtyDetail(-1)">−</button>
+                <span id="detail-qty">1</span>
+                <button onclick="changeQtyDetail(1)">+</button>
+            </div>
+
+            <button id="detail-add-btn" class="add-btn">
+                ADD TO BAG
+            </button>
+
+            <button id="detail-fav-btn" class="fav-btn">
+                <i id="fav-icon" class="fa-regular fa-heart"></i> Add to Favourite
+            </button>
+
+        </div>
+
+    </section>
+
+    <script src="js/product-detail.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>© 2026 MH24Collection. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+<!-- MOBILE MENUBAR -->
+<nav class="mobile-menubar" aria-label="Mobile menu">
+    <a href="index.html" class="mm-item" title="Home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
+    <a href="products.html" class="mm-item" title="Shop" aria-label="Shop"><i class="fa-solid fa-store"></i></a>
+    <a href="favourites.html" class="mm-item" title="Favourites" aria-label="Favourites"><i class="fa-solid fa-heart"></i><span class="mm-badge" id="mm-fav-count">0</span></a>
+    <a href="cart.html" class="mm-item" title="Cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="mm-badge" id="mm-cart-count">0</span></a>
+    <a href="profile.html" class="mm-item" title="Profile" aria-label="Profile"><i class="fa-solid fa-user"></i></a>
+</nav>
