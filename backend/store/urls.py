@@ -11,6 +11,9 @@ from .views import (
 
 urlpatterns = [
 
+    # HOME (ADD THIS)
+    path('', product_list),
+
     # AUTH
     path('signup/', signup_view),
     path('login/', login_view),
