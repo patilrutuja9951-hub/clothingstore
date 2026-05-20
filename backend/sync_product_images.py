@@ -18,11 +18,11 @@ image_map = {
     'URBAN CARGO PANTS': 'cargo.png',
     'MINIMAL WHITE TEE': 'whitetee.png',
     'STREET HOODIE': 'hoodie.png',
-    'CHIC BOW TOP': 'rmbow top.png',
+    'CHIC BOW TOP': 'rmbow_top.png',
     'SUMMER BREEZE DRESS': 'summerbg.png',
     'RED LEATHER STREET JACKET': 'red-removebg-preview.png',
     'OVERSIZED GRAPHIC TEE': 'graphictee.png',
-    'LOOSE FIT SHIRT': 'loose shirt.png'
+    'LOOSE FIT SHIRT': 'loose_shirt.png'
 }
 
 print(f'Frontend images directory: {FRONTEND_IMAGES_DIR}')
