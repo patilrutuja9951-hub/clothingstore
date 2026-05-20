@@ -15,11 +15,11 @@ const localProductImageMap = {
   "URBAN CARGO PANTS": "/static/images/cargo.png",
   "MINIMAL WHITE TEE": "/static/images/whitetee.png",
   "STREET HOODIE": "/static/images/hoodie.png",
-  "CHIC BOW TOP": "/static/images/rmbow top.png",
+  "CHIC BOW TOP": "/static/images/rmbow_top.png",
   "SUMMER BREEZE DRESS": "/static/images/summerbg.png",
   "RED LEATHER STREET JACKET": "/static/images/red-removebg-preview.png",
   "OVERSIZED GRAPHIC TEE": "/static/images/graphictee.png",
-  "LOOSE FIT SHIRT": "/static/images/loose shirt.png"
+  "LOOSE FIT SHIRT": "/static/images/loose_shirt.png"
 };
 
 function getLocalImage(name) {
