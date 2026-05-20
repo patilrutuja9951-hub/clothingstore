@@ -5,8 +5,7 @@ const BACKEND_URL =
   window.location.hostname === "127.0.0.1" ||
   window.location.protocol === "file:"
     ? "http://127.0.0.1:8000"
-    : "https://clothing-store-1-oztb.onrender.com";
-
+    : 'https://clothingstore-1-r70f.onrender.com';
 /* =========================
    LOCAL FALLBACK IMAGES
 ========================= */

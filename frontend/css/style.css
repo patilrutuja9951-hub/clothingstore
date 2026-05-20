@@ -512,7 +512,7 @@ button {
   letter-spacing: 4px;
   color: #fff;
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
   text-shadow: 0 0 20px rgba(212,175,55,0.2);
 }
 
@@ -520,7 +520,7 @@ button {
   color: #D4AF37;
   font-size: 16px;
   letter-spacing: 1.5px;
-  text-align: left;
+  text-align: center;
   font-weight: 500;
 }
 

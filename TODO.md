@@ -1,4 +1,4 @@
-# Fix Products Not Loading Issue (Deployed: https://clothing-store-1-oztb.onrender.com)
+# Fix Products Not Loading Issue (Deployed: clothingstore-2-smeg.onrender.com)
 
 ## Status Legend
 - [x] Completed
@@ -9,7 +9,7 @@
 **Summary**: API exists but DB empty on Render + frontend wrong backend URL.
 
 ### [x] Step 1: Fix frontend BACKEND_URL in products.js ✅
-**Files**: `frontend/js/products.js` (Updated to https://clothing-store-1-oztb.onrender.com)
+**Files**: `frontend/js/products.js` (Updated to clothingstore-2-smeg.onrender.com)
 
 ### [x] Step 2: Auto-populate products on Render deploy ✅
 **Files**: `render.yaml`
