@@ -113,7 +113,7 @@ async function loadProducts() {
 
 function renderProducts() {
 
-  const container = document.getElementById("products-container");
+  const container = document.getElementById("product-container");
 
   if (!container) return;
 
