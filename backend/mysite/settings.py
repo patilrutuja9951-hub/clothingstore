@@ -173,9 +173,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
-    FRONTEND_DIR / 'css',
-    FRONTEND_DIR / 'js',
-    FRONTEND_DIR / 'images',
+    FRONTEND_DIR / 'static',
 ]
 
 # ======================
