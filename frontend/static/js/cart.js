@@ -54,7 +54,7 @@ if (cartContainer) {
       div.innerHTML = `
         <div class="cart-left">
           <img src="${item.img}" alt="${item.name}" 
-               onerror="this.src='images/placeholder.png'">
+               onerror="this.src='/static/images/placeholder.png'">
 
           <div>
             <h3>${item.name}</h3>

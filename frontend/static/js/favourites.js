@@ -41,7 +41,7 @@ if (favContainer) {
       div.innerHTML = `
         <div onclick="openDetail(${item.id})">
           <img src="${item.img}" alt="${item.name}"
-               onerror="this.src='images/placeholder.png'">
+               onerror="this.src='/static/images/placeholder.png'">
 
           <h3>${item.name}</h3>
           <p>₹${item.price}</p>

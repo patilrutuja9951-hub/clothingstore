@@ -1,17 +1,17 @@
 const localProductImageMap = {
-  "STREETSTYLE LEATHER JACKET": "images/leatherjacket.png",
-  "URBAN CARGO PANTS": "images/cargo.png",
-  "MINIMAL WHITE TEE": "images/whitetee.png",
-  "STREET HOODIE": "images/hoodie.png",
-  "CHIC BOW TOP": "images/rmbow top.png",
-  "SUMMER BREEZE DRESS": "images/summerbg.png",
-  "RED LEATHER STREET JACKET": "images/red-removebg-preview.png",
-  "OVERSIZED GRAPHIC TEE": "images/graphictee.png",
-  "LOOSE FIT SHIRT": "images/loose shirt.png"
+  "STREETSTYLE LEATHER JACKET": "/static/images/leatherjacket.png",
+  "URBAN CARGO PANTS": "/static/images/cargo.png",
+  "MINIMAL WHITE TEE": "/static/images/whitetee.png",
+  "STREET HOODIE": "/static/images/hoodie.png",
+  "CHIC BOW TOP": "/static/images/rmbow top.png",
+  "SUMMER BREEZE DRESS": "/static/images/summerbg.png",
+  "RED LEATHER STREET JACKET": "/static/images/red-removebg-preview.png",
+  "OVERSIZED GRAPHIC TEE": "/static/images/graphictee.png",
+  "LOOSE FIT SHIRT": "/static/images/loose shirt.png"
 };
 
 function getLocalImage(name) {
-  return localProductImageMap[name] || "images/blacktee1.png";
+  return localProductImageMap[name] || "/static/images/blacktee1.png";
 }
 
 const BACKEND_URL =
@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       id: data.id,
       name: data.name,
       price: data.price,
-      img: data.image || getLocalImage(data.name),
+      img: data.image
+        ? `${BACKEND_URL}${data.image}`
+        : getLocalImage(data.name),
       desc: data.description
     };
 
@@ -79,7 +81,7 @@ function renderProduct(product) {
     img.alt = product.name;
 
     img.onerror = function () {
-      this.src = "images/blacktee1.png";
+      this.src = "/static/images/blacktee1.png";
     };
   }
 
