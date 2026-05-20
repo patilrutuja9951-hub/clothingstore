@@ -11,6 +11,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_IMAGES_DIR = os.path.normpath(
     os.path.join(BASE_DIR, '..', 'frontend', 'static', 'images')
 )
+
+MEDIA_PRODUCTS_DIR = os.path.join(BASE_DIR, 'media', 'products')
 os.makedirs(MEDIA_PRODUCTS_DIR, exist_ok=True)
 
 image_map = {
