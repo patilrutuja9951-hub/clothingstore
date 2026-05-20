@@ -128,7 +128,7 @@ function renderProducts() {
         <img
           src="${product.img}"
           alt="${product.name}"
-          onerror="this.onerror=null;this.src='images/blacktee1.png.png';"
+          onerror="this.onerror=null;this.src='images/blacktee1.png';"
         >
 
         <h3>${product.name}</h3>

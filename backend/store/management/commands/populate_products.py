@@ -28,7 +28,7 @@ class Command(BaseCommand):
                 "name": "OVERSIZED BLACK TEE",
                 "description": "Relaxed oversized black tee for everyday street style.",
                 "price": "899.00",
-                "image": "products/blacktee1.png.png",
+                "image": "products/blacktee1.png",
                 "category": men,
             },
             {
