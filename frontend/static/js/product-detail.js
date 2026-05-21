@@ -3,11 +3,11 @@ const localProductImageMap = {
   "URBAN CARGO PANTS": "/static/images/cargo.png",
   "MINIMAL WHITE TEE": "/static/images/whitetee.png",
   "STREET HOODIE": "/static/images/hoodie.png",
-  "CHIC BOW TOP": "/static/images/rmbow top.png",
+  "CHIC BOW TOP": "/static/images/rmbow_top.png",
   "SUMMER BREEZE DRESS": "/static/images/summerbg.png",
   "RED LEATHER STREET JACKET": "/static/images/red-removebg-preview.png",
   "OVERSIZED GRAPHIC TEE": "/static/images/graphictee.png",
-  "LOOSE FIT SHIRT": "/static/images/loose shirt.png"
+  "LOOSE FIT SHIRT": "/static/images/loose_shirt.png"
 };
 
 function getLocalImage(name) {
@@ -19,7 +19,7 @@ const BACKEND_URL =
   window.location.hostname === "127.0.0.1" ||
   window.location.protocol === "file:"
     ? "http://127.0.0.1:8000"
-    : "https://clothing-store-n0f6.onrender.com";
+    : 'https://clothingstore-2-smeg.onrender.com';
 
 /* =========================
    LOAD PRODUCT
