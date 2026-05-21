@@ -93,11 +93,11 @@ async function loadProducts() {
       name: item.name,
       price: item.price,
 
-   img: item.image
-     ? `${BACKEND_URL}${item.image}`
-     : getLocalImage(item.name),
+      img: item.image
+        ? item.image
+        : getLocalImage(item.name),
 
-   desc: item.description
+      desc: item.description
    }));
 
     console.log("Loaded Products:", products);

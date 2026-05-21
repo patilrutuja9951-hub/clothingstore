@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       name: data.name,
       price: data.price,
       img: data.image
-        ? `${BACKEND_URL}${data.image}`
+        ? data.image
         : getLocalImage(data.name),
       desc: data.description
     };

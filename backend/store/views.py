@@ -93,12 +93,17 @@ def product_list(request):
     data = []
 
     for p in products:
+        image_url = p.image.url if p.image else None
+        if image_url:
+            while image_url.endswith('%20'):
+                image_url = image_url[:-3]
+            image_url = image_url.strip()
         data.append({
             "id": p.id,
             "name": p.name,
             "price": str(p.price),
             "description": p.description,
-            "image": request.build_absolute_uri(p.image.url) if p.image else None,
+            "image": request.build_absolute_uri(image_url) if image_url else None,
             "category": p.category.name if p.category else None
         })
 
@@ -120,12 +125,17 @@ def product_detail(request, product_id):
                 "created_at": review.created_at.isoformat()
             })
         
+        image_url = product.image.url if product.image else None
+        if image_url:
+            while image_url.endswith('%20'):
+                image_url = image_url[:-3]
+            image_url = image_url.strip()
         return JsonResponse({
             "id": product.id,
             "name": product.name,
             "price": str(product.price),
             "description": product.description,
-            "image": request.build_absolute_uri(product.image.url) if product.image else None,
+            "image": request.build_absolute_uri(image_url) if image_url else None,
             "category": product.category.name if product.category else None,
             "reviews": reviews_data
         })
