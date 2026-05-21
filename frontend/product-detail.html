@@ -74,6 +74,28 @@
     <script src="/static/js/auth.js" defer></script>
     <script src="/static/js/main.js" defer></script>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                try {
+                    if (!window.location.href.includes('product-detail.html')) return;
+                    const params = new URLSearchParams(window.location.search);
+                    const id = params.get('id');
+                    if (!id) return;
+                    const res = await fetch(`https://clothingstore-2-smeg.onrender.com/api/product/${id}/`);
+                    if (!res.ok) return;
+                    const data = await res.json();
+                    const imgEl = document.getElementById('detail-img');
+                    if (imgEl) imgEl.src = data.image || '/static/images/blacktee1.png';
+                    if (imgEl) imgEl.onerror = () => imgEl.src = '/static/images/blacktee1.png';
+                    const name = document.getElementById('detail-name'); if (name) name.innerText = data.name;
+                    const price = document.getElementById('detail-price'); if (price) price.innerText = new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR'}).format(data.price);
+                    const desc = document.getElementById('detail-desc'); if (desc) desc.innerText = data.description;
+                } catch (err) {
+                    console.error('Inline product-detail fetch failed', err);
+                }
+            });
+        </script>
+
     <footer class="footer">
         <div class="footer-container">
             <p>© 2026 MH24Collection. All rights reserved.</p>

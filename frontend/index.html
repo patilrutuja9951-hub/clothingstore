@@ -350,7 +350,62 @@
   <script src="/static/js/slider.js" defer></script>
   <script src="/static/js/auth.js" defer></script>
   <script src="/static/js/main.js" defer></script>
-
 </body>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category');
+        const BACKEND = 'https://clothingstore-2-smeg.onrender.com';
+        let apiUrl = `${BACKEND}/api/products/`;
+        if (category) apiUrl += `?category=${encodeURIComponent(category)}`;
+
+        const res = await fetch(apiUrl);
+        if (!res.ok) return;
+        const data = await res.json();
+
+        const isHome = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '';
+        const items = isHome ? data.slice(0,4) : data;
+
+        const localMap = {
+          "STREETSTYLE LEATHER JACKET": "/static/images/leatherjacket.png",
+          "URBAN CARGO PANTS": "/static/images/cargo.png",
+          "MINIMAL WHITE TEE": "/static/images/whitetee.png",
+          "STREET HOODIE": "/static/images/hoodie.png",
+          "CHIC BOW TOP": "/static/images/rmbow_top.png",
+          "SUMMER BREEZE DRESS": "/static/images/summerbg.png",
+          "RED LEATHER STREET JACKET": "/static/images/red-removebg-preview.png",
+          "OVERSIZED GRAPHIC TEE": "/static/images/graphictee.png",
+          "LOOSE FIT SHIRT": "/static/images/loose_shirt.png"
+        };
+
+        const container = document.getElementById('product-container');
+        if (!container) return;
+
+        container.innerHTML = items.map(item => {
+          const img = item.image ? item.image : (localMap[item.name] || '/static/images/blacktee1.png');
+          return `
+            <div class="product-card" onclick="openDetail(${item.id})">
+              <img src="${img}" alt="${item.name}" onerror="this.onerror=null;this.src='/static/images/blacktee1.png'">
+              <h3>${item.name}</h3>
+              <p>₹${item.price}</p>
+              <div class="product-actions">
+                <button class="add-btn" onclick="addToCart(${item.id}, event)">Add To Cart</button>
+                <button class="fav-btn" onclick="toggleFav(event, ${item.id})"><i class="fa-regular fa-heart"></i></button>
+              </div>
+            </div>`;
+        }).join('');
+
+        if (typeof updateCartCount === 'function') updateCartCount();
+        if (typeof updateFavCount === 'function') updateFavCount();
+        if (typeof checkFavIcons === 'function') checkFavIcons();
+
+      } catch (err) {
+        console.error('Inline product render failed', err);
+      }
+    });
+  </script>
+
+</body>
 </html>
