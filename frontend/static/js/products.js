@@ -94,7 +94,7 @@ async function loadProducts() {
       price: item.price,
 
       img: item.image
-        ? item.image
+        ? `/static/${item.image}`
         : getLocalImage(item.name),
 
       desc: item.description
@@ -169,7 +169,7 @@ function renderProducts() {
 ========================= */
 
 function openDetail(id) {
-  window.location.href = `product-detail.html?id=${id}`;
+  window.location.href = `/product-detail.html?id=${id}`;
 }
 
 /* =========================
