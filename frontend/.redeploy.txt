@@ -1,0 +1,4 @@
+Redeploy trigger file
+Timestamp: 2026-05-22T00:00:00Z
+
+This file is a harmless marker to force Render to pick up a new commit and redeploy the static frontend.
