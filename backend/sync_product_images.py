@@ -27,6 +27,7 @@ image_map = {
     'LOOSE FIT SHIRT': 'loose_shirt.png'
 }
 
+ 
 print(f'Frontend images directory: {FRONTEND_IMAGES_DIR}')
 print(f'Media products directory: {MEDIA_PRODUCTS_DIR}')
 
