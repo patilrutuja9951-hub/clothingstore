@@ -10,7 +10,6 @@ from .views import (
 )
 
 urlpatterns = [
-
     # AUTH
     path('signup/', signup_view),
     path('login/', login_view),
@@ -18,7 +17,7 @@ urlpatterns = [
 
     # PRODUCTS
     path('products/', product_list),
-    path('product/<int:product_id>/', product_detail),
+    path('products/<int:product_id>/', product_detail),  # FIXED: was 'product/'
 
     # CATEGORIES
     path('categories/', categories_list),

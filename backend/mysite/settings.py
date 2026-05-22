@@ -13,11 +13,11 @@ SECRET_KEY = config(
     default='django-insecure-change-this-key'
 )
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config(
     'ALLOWED_HOSTS',
-    default='localhost,127.0.0.1',
+    default='localhost,127.0.0.1,testserver,0.0.0.0,*',
     cast=Csv()
 )
 
@@ -76,11 +76,16 @@ MIDDLEWARE = [
 # CORS
 # ======================
 
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = DEBUG
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+    "https://clothingstore-2-smeg.onrender.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -170,7 +175,7 @@ STATICFILES_DIRS = [
     FRONTEND_DIR / 'static',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # ======================
 # MEDIA FILES
@@ -194,3 +199,39 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ]
 }
+
+# ======================
+# LOGGING (TEMP DEBUG)
+# ======================
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
+# Force DEBUG True locally (already default but making explicit)
+import os
+if os.environ.get('RENDER'):
+    DEBUG = False
+else:
+    DEBUG = True
