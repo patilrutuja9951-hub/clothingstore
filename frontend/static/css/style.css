@@ -1082,7 +1082,7 @@ button {
   margin-bottom: 20px;
 }
 
-.qty-box button {
+.changeQtyDetail button {
   padding: 6px 14px;
   font-size: 18px;
   background: #222;
@@ -1093,7 +1093,7 @@ button {
   transition: 0.2s;
 }
 
-.qty-box button:hover {
+.changeQtyDetail button:hover {
   background: #333;
   color: white;
 }
@@ -2022,5 +2022,184 @@ button {
 
   .category-card {
     height: 280px;
+  }
+}
+
+/* =========================================
+   TRACK ORDER PAGE
+========================================= */
+
+.track-order-section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5%;
+  background: linear-gradient(160deg, #0d0d0d 0%, #1a0008 100%);
+}
+
+.track-order-section h1 {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #f8f6f0;
+  margin-bottom: 12px;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(212,175,55,0.2);
+}
+
+.track-order-section > p {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 40px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  max-width: 480px;
+}
+
+/* FORM CARD */
+.track-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+}
+
+.track-form label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #888;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.track-form input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: rgba(255,255,255,0.05);
+  color: #f0e6d2;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  margin-bottom: 4px;
+}
+
+.track-form input::placeholder {
+  color: rgba(240,230,210,0.35);
+}
+
+.track-form input:focus {
+  border-color: #D4AF37;
+  box-shadow: 0 0 14px rgba(212,175,55,0.2);
+  background: rgba(212,175,55,0.05);
+}
+
+.track-form button[type="submit"] {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(45deg, #ffd814, #ffcc00);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255,216,20,0.25);
+}
+
+.track-form button[type="submit"]:hover {
+  background: linear-gradient(45deg, #800020, #a00028);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(128,0,32,0.4);
+}
+
+/* RESULT BOX */
+.track-result {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,175,55,0.12);
+  border-radius: 16px;
+  padding: 28px 32px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  line-height: 1.8;
+  transition: border-color 0.3s ease;
+}
+
+.track-result:has(p:not(:empty)) {
+  border-color: rgba(212,175,55,0.25);
+}
+
+/* Status badges — add these classes from your JS */
+.track-result .status-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.track-result .status-pending   { background: rgba(255,216,20,0.12); color: #ffd814; border: 1px solid rgba(255,216,20,0.3); }
+.track-result .status-shipped   { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+.track-result .status-delivered { background: rgba(34,197,94,0.12);  color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+.track-result .status-cancelled { background: rgba(239,68,68,0.12);  color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+.track-result h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f8f6f0;
+  margin-bottom: 10px;
+}
+
+.track-result p {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.track-result strong {
+  color: #ffd814;
+}
+
+/* MOBILE */
+@media (max-width: 860px) {
+  .track-order-section {
+    padding: 50px 5%;
+  }
+
+  .track-order-section h1 {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  .track-form {
+    padding: 28px 20px;
+  }
+
+  .track-result {
+    padding: 20px;
   }
 }

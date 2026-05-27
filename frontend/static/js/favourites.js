@@ -1,11 +1,18 @@
 /* =========================
    UPDATE FAV COUNT
 ========================= */
+
 function updateFavCount() {
+
   const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+
   const favCountEl = document.getElementById("fav-count");
+
   if (favCountEl) favCountEl.innerText = favourites.length;
-  if (typeof updateMobileCounts === "function") updateMobileCounts();
+
+  if (typeof updateMobileCounts === "function") {
+    updateMobileCounts();
+  }
 }
 
 
@@ -13,11 +20,15 @@ function updateFavCount() {
    FAVOURITES PAGE
 ========================= */
 
-const favContainer = document.querySelector(".favourites-container");
+function loadFavouritesPage() {
 
-if (favContainer) {
+  // FIXED: matches id="fav-container" in favourites.html
+  const favContainer = document.getElementById("fav-container");
+
+  if (!favContainer) return;
 
   let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+
   favContainer.innerHTML = "";
 
   if (favourites.length === 0) {
@@ -36,38 +47,49 @@ if (favContainer) {
     favourites.forEach((item, index) => {
 
       const div = document.createElement("div");
+
       div.classList.add("product-card");
 
       div.innerHTML = `
         <div onclick="openDetail(${item.id})">
-          <img src="${item.img}" alt="${item.name}"
-               onerror="this.src='/static/images/placeholder.png'">
+
+          <img
+            src="${item.img}"
+            alt="${item.name}"
+            onerror="this.onerror=null;this.src='static/images/placeholder.png';">
 
           <h3>${item.name}</h3>
+
           <p>₹${item.price}</p>
+
         </div>
 
         <div class="fav-buttons">
-          <button onclick="addFavToCart(${item.id}); event.stopPropagation();">
+
+          <button class="add-btn" onclick="addFavToCart(${item.id}); event.stopPropagation();">
             Add To Cart
           </button>
 
-          <button onclick="removeFav(${index}); event.stopPropagation();">
+          <button class="fav-btn" onclick="removeFav(${index}); event.stopPropagation();">
             Remove
           </button>
+
         </div>
       `;
 
       favContainer.appendChild(div);
+
     });
 
   }
+
 }
 
 
 /* =========================
    REMOVE FAVOURITE
 ========================= */
+
 function removeFav(index) {
 
   let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
@@ -77,6 +99,7 @@ function removeFav(index) {
   localStorage.setItem("favourites", JSON.stringify(favourites));
 
   updateFavCount();
+
   location.reload();
 }
 
@@ -84,12 +107,15 @@ function removeFav(index) {
 /* =========================
    ADD FAV TO CART
 ========================= */
+
 function addFavToCart(id) {
 
   let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const product = favourites.find(item => item.id == id);
+
   if (!product) return;
 
   const existing = cart.find(item => item.id == id);
@@ -109,13 +135,24 @@ function addFavToCart(id) {
 
 
 /* =========================
+   OPEN DETAIL
+========================= */
+
+function openDetail(id) {
+  window.location.href = `product-detail.html?id=${id}`;
+}
+
+
+/* =========================
    TOGGLE FAVOURITE
 ========================= */
+
 function toggleFav(e, id) {
 
   e.stopPropagation();
 
   let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+
   const icon = e.target;
 
   const exists = favourites.find(item => item.id == id);
@@ -128,8 +165,6 @@ function toggleFav(e, id) {
     icon.classList.add("fa-regular");
     icon.style.color = "";
 
-    alert("Removed from Favourites 💔");
-
   } else {
 
     if (typeof products === "undefined") {
@@ -138,25 +173,26 @@ function toggleFav(e, id) {
     }
 
     const product = products.find(p => p.id == id);
+
     if (!product) return;
 
     favourites.push({
-      id: product.id,
-      name: product.name,
+      id:    product.id,
+      name:  product.name,
       price: product.price,
-      img: product.img
+      img:   product.img
     });
 
     icon.classList.remove("fa-regular");
     icon.classList.add("fa-solid");
     icon.style.color = "red";
 
-    alert("Added to Favourites ❤️");
   }
 
   localStorage.setItem("favourites", JSON.stringify(favourites));
 
   updateFavCount();
+
   checkFavIcons();
 }
 
@@ -164,6 +200,7 @@ function toggleFav(e, id) {
 /* =========================
    SYNC ICONS
 ========================= */
+
 function checkFavIcons() {
 
   let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
@@ -171,6 +208,7 @@ function checkFavIcons() {
   document.querySelectorAll(".fav-icon").forEach(icon => {
 
     const id = icon.getAttribute("data-id");
+
     const exists = favourites.find(item => item.id == id);
 
     if (exists) {
@@ -190,7 +228,9 @@ function checkFavIcons() {
 /* =========================
    INIT
 ========================= */
+
 document.addEventListener("DOMContentLoaded", () => {
   updateFavCount();
   checkFavIcons();
+  loadFavouritesPage();  // FIXED: now called on DOM ready
 });

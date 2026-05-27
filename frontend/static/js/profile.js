@@ -1,6 +1,12 @@
 // ================= LOAD USER =================
 
-const user = JSON.parse(localStorage.getItem("user"));
+let user = null;
+
+try {
+    user = JSON.parse(localStorage.getItem("user"));
+} catch (error) {
+    localStorage.removeItem("user");
+}
 
 
 // ================= CHECK LOGIN =================
@@ -18,19 +24,32 @@ if (!user) {
     const profilePhone = document.getElementById("profile-phone");
     const profileAddress = document.getElementById("profile-address");
 
-    if (profileName) profileName.innerText = user.name || "";
-    if (profileEmail) profileEmail.innerText = user.email || "";
-    if (profilePhone) profilePhone.innerText = user.phone || "Not set";
-    if (profileAddress) profileAddress.innerText = user.address || "Not set";
+    if (profileName) {
+        profileName.innerText = user.name || "User";
+    }
 
-    // SHOW USER DATA
+    if (profileEmail) {
+        profileEmail.innerText = user.email || "No Email";
+    }
+
+    if (profilePhone) {
+        profilePhone.innerText = user.phone || "Not set";
+    }
+
+    if (profileAddress) {
+        profileAddress.innerText = user.address || "Not set";
+    }
 }
 
 
 // ================= LOGOUT =================
 
 function logoutUser() {
+
     localStorage.removeItem("user");
+
+    alert("Logged out successfully");
+
     window.location.href = "signin.html";
 }
 

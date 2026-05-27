@@ -1,57 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Sign Up | MH24 Collection</title>
 
-    <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+          href="static/css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body class="signup-page with-footer">
 
-<div class="signup-box">
+    <div class="signup-box">
 
-    <h2>Create Account</h2>
+        <h2>Create Account</h2>
 
-    <!-- NAME -->
-    <input type="text" id="name" placeholder="Full Name" required>
+        <!-- NAME -->
 
-    <!-- EMAIL -->
-    <input type="email" id="email" placeholder="Email Address" required>
+        <input type="text"
+               id="name"
+               placeholder="Full Name"
+               required>
 
-    <!-- PASSWORD -->
-    <input type="password" id="password" placeholder="Password" required>
+        <!-- EMAIL -->
 
-    <!-- BUTTON -->
-    <button class="signup-btn" onclick="registerUser()">
-        Sign Up
-    </button>
+        <input type="email"
+               id="email"
+               placeholder="Email Address"
+               required>
 
-    <a href="/signin.html" class="login-link">
-        Already have an account? Login
-    </a>
+        <!-- PASSWORD -->
 
-</div>
+        <input type="password"
+               id="password"
+               placeholder="Password"
+               required>
 
-<script src="/static/js/auth.js" defer></script>
+        <!-- BUTTON -->
 
-<footer class="footer">
-    <div class="footer-container">
-        <p>© 2026 MH24Collection. All rights reserved.</p>
+        <button class="signup-btn"
+                onclick="registerUser()">
+
+            Sign Up
+
+        </button>
+
+        <a href="signin.html"
+           class="login-link">
+
+            Already have an account? Login
+
+        </a>
+
     </div>
-</footer>
+
+    <!-- SCRIPTS -->
+
+    <script src="static/js/auth.js"
+            defer></script>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <p>
+
+                © 2026 MH24Collection. All rights reserved.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- MOBILE MENUBAR -->
+
+    <nav class="mobile-menubar"
+         aria-label="Mobile menu">
+
+        <a href="index.html"
+           class="mm-item"
+           title="Home"
+           aria-label="Home">
+
+            <i class="fa-solid fa-house"></i>
+
+        </a>
+
+        <a href="products.html"
+           class="mm-item"
+           title="Shop"
+           aria-label="Shop">
+
+            <i class="fa-solid fa-store"></i>
+
+        </a>
+
+        <a href="favourites.html"
+           class="mm-item"
+           title="Favourites"
+           aria-label="Favourites">
+
+            <i class="fa-solid fa-heart"></i>
+
+            <span class="mm-badge"
+                  id="mm-fav-count">0</span>
+
+        </a>
+
+        <a href="cart.html"
+           class="mm-item"
+           title="Cart"
+           aria-label="Cart">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span class="mm-badge"
+                  id="mm-cart-count">0</span>
+
+        </a>
+
+        <a href="profile.html"
+           class="mm-item"
+           title="Profile"
+           aria-label="Profile">
+
+            <i class="fa-solid fa-user"></i>
+
+        </a>
+
+    </nav>
 
 </body>
-</html>
 
-<!-- MOBILE MENUBAR -->
-<nav class="mobile-menubar" aria-label="Mobile menu">
-    <a href="/index.html" class="mm-item" title="Home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
-    <a href="/products.html" class="mm-item" title="Shop" aria-label="Shop"><i class="fa-solid fa-store"></i></a>
-    <a href="/favourites.html" class="mm-item" title="Favourites" aria-label="Favourites"><i class="fa-solid fa-heart"></i><span class="mm-badge" id="mm-fav-count">0</span></a>
-    <a href="/cart.html" class="mm-item" title="Cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="mm-badge" id="mm-cart-count">0</span></a>
-    <a href="/profile.html" class="mm-item" title="Profile" aria-label="Profile"><i class="fa-solid fa-user"></i></a>
-</nav>
+</html>

@@ -5,85 +5,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Women | MH24 Collection</title>
-
-    <link rel="stylesheet" href="/static/css/style.css">
-    
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body class="with-footer">
-    
-    <header class="navbar">
+<body>
 
-        <div class="nav-left">
-            <h2 class="logo"></h2>
+  <!-- NAVBAR -->
+  <header>
+    <div class="navbar">
+
+      <div class="nav-logo">
+        <a href="index.html" class="logo-link">
+          <div class="logo"></div>
+        </a>
+      </div>
+
+      <div class="nav-address">
+        <p class="add-first">Deliver to</p>
+        <div class="add-icon">
+          <i class="fa-solid fa-location-dot"></i>
+          <p class="add-second">INDIA</p>
         </div>
+      </div>
 
-        <div class="nav-center">
-            <a href="/index.html" class="border">Home</a>
-        </div>
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="Search MH24Collection" class="search-input">
+        <button type="button" class="search-icon" onclick="goToSearch(event)">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
 
-        <div class="nav-right">
+      <div class="nav-signin border">
+        <a href="signin.html"><p><span>Hello, Sign in</span></p></a>
+      </div>
 
-            <a href="/favourites.html" class="nav-favourites border">
-                <i class="fa-solid fa-heart"></i>
-                <span id="fav-count">0</span>
-            </a>
+      <div class="nav-favourites border">
+        <a href="products.html">Shop</a>
+      </div>
 
-            <a href="/cart.html" class="nav-cart border">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-count">0</span>
-            </a>
+      <div class="nav-favourites border">
+        <a href="favourites.html">
+          <i class="fa-solid fa-heart"></i>
+          (<span id="fav-count">0</span>)
+        </a>
+      </div>
 
-            <span id="username"></span>
+      <div class="nav-cart border">
+        <a href="cart.html">
+          <i class="fa-solid fa-cart-shopping"></i>
+          Cart (<span id="cart-count">0</span>)
+        </a>
+      </div>
 
-            <a href="#" onclick="logout()" class="border">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </a>
+      <div class="nav-profile border">
+        <a href="profile.html"><i class="fa-solid fa-user"></i></a>
+      </div>
 
-        </div>
+      <div class="top-btn">
+        <a href="index.html"><i class="fa-solid fa-house"></i></a>
+      </div>
 
-    </header>
+      <div class="nav-logout">
+        <span id="username"></span>
+        <button type="button" onclick="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
 
-    <section class="category-hero">
-        <h1>WOMEN COLLECTION</h1>
-        <p>Fashion which boosts your Confidence!</p>
-    </section>
+    </div>
+  </header>
 
-    <section class="products">
-        <div class="product-grid" id="product-container">
-            <!-- Products will load dynamically -->
-        </div>
-    </section>
+  
+  <!-- PRODUCTS -->
+  <section class="featured">
+    <h2 class="section-title">WOMEN'S PICKS</h2>
+    <div class="product-container" id="product-container">
+      <!-- Products load here -->
+    </div>
+  </section>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams.get("category")) {
-            window.location.search = "?category=Women";
-        }
-    </script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
 
-    <script src="/static/js/products.js" defer></script>
-    <script src="/static/js/cart.js" defer></script>
-    <script src="/static/js/favourites.js" defer></script>
-    <script src="/static/js/main.js" defer></script>
+      <div class="footer-section">
+        <h3>MH24 COLLECTION</h3>
+        <p>Premium Gen-Z streetwear inspired by urban culture, oversized fashion, and bold individuality.</p>
+      </div>
 
-        <footer class="footer">
-            <div class="footer-container">
-                <p>© 2026 MH24Collection. All rights reserved.</p>
-            </div>
-        </footer>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="favourites.html">Favourites</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </div>
 
-<!-- MOBILE MENUBAR -->
-<nav class="mobile-menubar" aria-label="Mobile menu">
-    <a href="/index.html" class="mm-item" title="Home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
-    <a href="/products.html" class="mm-item" title="Shop" aria-label="Shop"><i class="fa-solid fa-store"></i></a>
-    <a href="/favourites.html" class="mm-item" title="Favourites" aria-label="Favourites"><i class="fa-solid fa-heart"></i><span class="mm-badge" id="mm-fav-count">0</span></a>
-    <a href="/cart.html" class="mm-item" title="Cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="mm-badge" id="mm-cart-count">0</span></a>
-    <a href="/profile.html" class="mm-item" title="Profile" aria-label="Profile"><i class="fa-solid fa-user"></i></a>
-</nav>
+      <div class="footer-section">
+        <h3>Customer Support</h3>
+        <ul>
+          <li><a href="track-orders.html">Track Order</a></li>
+          <li><a href="add_review.html">Rate Us</a></li>
+          <li><a href="signin.html">Sign In</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: mh24collection@gmail.com</p>
+        <p>Phone: +91 9326598416</p>
+        <p>Mumbai, India</p>
+      </div>
+
+    </div>
+
+    <div class="footer-social-links">
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="#"><i class="fab fa-x-twitter"></i> Twitter</a>
+      <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 MH24 Collection. All Rights Reserved.</p>
+      <p class="developer-credit">Designed & Developed by <strong>Rutuja Patil</strong></p>
+    </div>
+  </footer>
+
+  <script src="static/js/main.js" defer></script>
+  <script src="static/js/auth.js" defer></script>
+  <script src="static/js/cart.js" defer></script>
+  <script src="static/js/favourites.js" defer></script>
+  <script src="static/js/products.js" defer></script>
 
 </body>
-
 </html>

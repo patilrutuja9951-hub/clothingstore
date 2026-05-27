@@ -2,115 +2,552 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <title>Product Detail | MH24</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail | MH24 Collection</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+  /* =====================
+     PRODUCT DETAIL PAGE
+  ===================== */
 
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  .product-detail-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 60px 8%;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0d0d0d 0%, #1a0008 100%);
+  }
+
+  /* DETAIL CONTAINER */
+  #detail-container {
+    display: flex;
+    gap: 60px;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  /* IMAGE SIDE */
+  .detail-image {
+    flex: 1;
+    max-width: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: sticky;
+    top: 90px;
+  }
+
+  .detail-image img {
+    width: 100%;
+    max-height: 580px;
+    object-fit: contain;
+    border-radius: 20px;
+    background: #111;
+    padding: 24px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,175,55,0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .detail-image img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 60px rgba(212,175,55,0.15), 0 0 0 1px rgba(212,175,55,0.25);
+  }
+
+  /* INFO SIDE */
+  .detail-info {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .detail-info h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #f8f6f0;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .detail-price {
+    font-size: 30px;
+    font-weight: 800;
+    color: #ffd814;
+    margin-bottom: 14px;
+  }
+
+  .detail-desc {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    border-left: 3px solid rgba(212,175,55,0.4);
+    padding-left: 14px;
+  }
+
+  /* DIVIDER */
+  .detail-info .sizes,
+  .detail-info .detail-qty-control,
+  .detail-info .detail-actions {
+    margin-bottom: 20px;
+  }
+
+  /* SIZE LABEL */
+  .detail-info > p,
+  .detail-info .size-label {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  /* SIZES */
+  .sizes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .sizes span {
+    border: 1px solid #333;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ccc;
+    background: rgba(255,255,255,0.04);
+    letter-spacing: 0.5px;
+  }
+
+  .sizes span:hover {
+    border-color: #D4AF37;
+    color: #D4AF37;
+    background: rgba(212,175,55,0.08);
+    transform: translateY(-2px);
+  }
+
+  .sizes span.selected {
+    border-color: #ffd814;
+    background: rgba(255,216,20,0.12);
+    color: #ffd814;
+    box-shadow: 0 0 10px rgba(255,216,20,0.2);
+  }
+
+  /* QTY CONTROL */
+  .detail-qty-control {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    width: fit-content;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .detail-qty-control button {
+    background: transparent;
+    color: #fff;
+    border: none;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .detail-qty-control button:hover {
+    background: rgba(255,216,20,0.1);
+    color: #ffd814;
+  }
+
+  .detail-qty-control span {
+    min-width: 48px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ACTION BUTTONS */
+  .detail-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .detail-actions .add-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(45deg, #ffd814, #ffcc00);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255,216,20,0.25);
+  }
+
+  .detail-actions .add-btn:hover {
+    background: linear-gradient(45deg, #800020, #a00028);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(128,0,32,0.4);
+  }
+
+  .detail-actions .fav-btn {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    color: #ccc;
+    border: 1px solid #333;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  .detail-actions .fav-btn:hover {
+    border-color: #D4AF37;
+    color: #D4AF37;
+    background: rgba(212,175,55,0.06);
+  }
+
+  /* BACK BUTTON */
+  .back-btn {
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 0;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+    text-align: left;
+  }
+
+  .back-btn:hover {
+    color: #D4AF37;
+  }
+
+  /* BADGES ROW */
+  .detail-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .detail-badge {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    background: rgba(212,175,55,0.1);
+    border: 1px solid rgba(212,175,55,0.3);
+    color: #D4AF37;
+  }
+
+  /* SEPARATOR LINE */
+  .detail-separator {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 20px 0;
+  }
+
+  /* MOBILE */
+  @media (max-width: 860px) {
+    .product-detail-page {
+      flex-direction: column;
+      padding: 24px 5%;
+      gap: 28px;
+    }
+
+    #detail-container {
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .detail-image {
+      max-width: 100%;
+      width: 100%;
+      position: static;
+    }
+
+    .detail-image img {
+      max-height: 380px;
+    }
+
+    .detail-info {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .detail-info h1 {
+      font-size: 22px;
+    }
+
+    .detail-price {
+      font-size: 24px;
+    }
+  }
+</style>
+
 </head>
 
-<body class="with-footer">
+<body>
 
-    <header class="navbar">
-        <a href="/index.html">Home</a>
+  <!-- NAVBAR -->
+  <header>
+    <div class="navbar">
 
-        <div>
-            <a href="/favourites.html">
-                <i class="fa-solid fa-heart"></i>
-                <span id="fav-count">0</span>
-            </a>
+      <div class="nav-logo">
+        <a href="index.html" class="logo-link">
+          <div class="logo"></div>
+        </a>
+      </div>
 
-            <a href="/cart.html">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-count">0</span>
-            </a>
+      <div class="nav-address">
+        <p class="add-first">Deliver to</p>
+        <div class="add-icon">
+          <i class="fa-solid fa-location-dot"></i>
+          <p class="add-second">INDIA</p>
         </div>
-    </header>
+      </div>
+
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="Search MH24Collection" class="search-input">
+        <button type="button" class="search-icon" onclick="goToSearch(event)">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <div class="nav-signin border">
+        <a href="signin.html"><p><span>Hello, Sign in</span></p></a>
+      </div>
+
+      <div class="nav-favourites border">
+        <a href="products.html">Shop</a>
+      </div>
+
+      <div class="nav-favourites border">
+        <a href="favourites.html">
+          <i class="fa-solid fa-heart"></i>
+          (<span id="fav-count">0</span>)
+        </a>
+      </div>
+
+      <div class="nav-cart border">
+        <a href="cart.html">
+          <i class="fa-solid fa-cart-shopping"></i>
+          Cart (<span id="cart-count">0</span>)
+        </a>
+      </div>
+
+      <div class="nav-profile border">
+        <a href="profile.html"><i class="fa-solid fa-user"></i></a>
+      </div>
+
+      <div class="top-btn">
+        <a href="index.html"><i class="fa-solid fa-house"></i></a>
+      </div>
+
+      <div class="nav-logout">
+        <span id="username"></span>
+        <button type="button" onclick="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- PRODUCT DETAIL -->
+  <main class="page-content">
 
     <section class="product-detail-page">
 
-        <div class="detail-left">
-            <img id="detail-img" src="" alt="Product image" width="300">
+      <div id="detail-container">
+
+        <!-- IMAGE SIDE -->
+        <div class="detail-image">
+          <img id="detail-img"
+               src="static/images/blacktee1.png"
+               alt="Product image"
+               onerror="this.onerror=null;this.src='static/images/blacktee1.png';">
         </div>
 
-        <div class="detail-right">
+        <!-- INFO SIDE -->
+        <div class="detail-info">
 
-            <h2 id="detail-name">Product Name</h2>
-            <h3 id="detail-price">₹0</h3>
-            <p id="detail-desc">Product description will appear here.</p>
+          <h1 id="detail-name">Loading...</h1>
+          <p class="detail-price" id="detail-price">₹0</p>
+          <p class="detail-desc" id="detail-desc">Please wait...</p>
 
-            <div class="size-section">
-                <p>Select Size:</p>
+          <p class="size-label">Select Size:</p>
+          <div class="sizes">
+            <span onclick="selectSize(this)">S</span>
+            <span onclick="selectSize(this)">M</span>
+            <span onclick="selectSize(this)">L</span>
+            <span onclick="selectSize(this)">XL</span>
+            <span onclick="selectSize(this)">XXL</span>
+          </div>
 
-                <div class="sizes">
-                    <span onclick="selectSize(this)">S</span>
-                    <span onclick="selectSize(this)">M</span>
-                    <span onclick="selectSize(this)">L</span>
-                    <span onclick="selectSize(this)">XL</span>
-                </div>
-            </div>
+          <div class="detail-qty-control">
+            <button onclick="changeQtyDetail(-1)">−</button>
+            <span id="detail-qty">1</span>
+            <button onclick="changeQtyDetail(1)">+</button>
+          </div>
 
-            <div class="qty-section">
-                <button onclick="changeQtyDetail(-1)">−</button>
-                <span id="detail-qty">1</span>
-                <button onclick="changeQtyDetail(1)">+</button>
-            </div>
-
-            <button id="detail-add-btn" class="add-btn">
-                ADD TO BAG
+          <div class="detail-actions">
+            <button id="detail-add-btn" class="add-btn">ADD TO BAG</button>
+            <button id="fav-detail-btn" class="fav-btn">
+              <i class="fa-regular fa-heart"></i>
+              Add to Favourite
             </button>
+          </div>
 
-            <button id="detail-fav-btn" class="fav-btn">
-                <i id="fav-icon" class="fa-regular fa-heart"></i> Add to Favourite
-            </button>
+          <button class="back-btn" onclick="history.back()">← Back</button>
 
         </div>
+
+      </div>
 
     </section>
 
-    <script src="/static/js/product-detail.js" defer></script>
-    <script src="/static/js/auth.js" defer></script>
-    <script src="/static/js/main.js" defer></script>
+  </main>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', async () => {
-                try {
-                    if (!window.location.href.includes('product-detail.html')) return;
-                    const params = new URLSearchParams(window.location.search);
-                    const id = params.get('id');
-                    if (!id) return;
-                    const res = await fetch(`https://clothingstore-2-smeg.onrender.com/api/product/${id}/`);
-                    if (!res.ok) return;
-                    const data = await res.json();
-                    const imgEl = document.getElementById('detail-img');
-                    if (imgEl) imgEl.src = data.image || '/static/images/blacktee1.png';
-                    if (imgEl) imgEl.onerror = () => imgEl.src = '/static/images/blacktee1.png';
-                    const name = document.getElementById('detail-name'); if (name) name.innerText = data.name;
-                    const price = document.getElementById('detail-price'); if (price) price.innerText = new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR'}).format(data.price);
-                    const desc = document.getElementById('detail-desc'); if (desc) desc.innerText = data.description;
-                } catch (err) {
-                    console.error('Inline product-detail fetch failed', err);
-                }
-            });
-        </script>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>© 2026 MH24Collection. All rights reserved.</p>
-        </div>
-    </footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-section">
+        <h3>MH24 COLLECTION</h3>
+        <p>Premium Gen-Z streetwear inspired by urban culture, oversized fashion, and bold individuality.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="favourites.html">Favourites</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Customer Support</h3>
+        <ul>
+          <li><a href="track-orders.html">Track Order</a></li>
+          <li><a href="add_review.html">Rate Us</a></li>
+          <li><a href="signin.html">Sign In</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: mh24collection@gmail.com</p>
+        <p>Phone: +91 9326598416</p>
+        <p>Mumbai, India</p>
+      </div>
+
+    </div>
+
+    <div class="footer-social-links">
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="#"><i class="fab fa-x-twitter"></i> Twitter</a>
+      <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 MH24 Collection. All Rights Reserved.</p>
+      <p class="developer-credit">Designed & Developed by <strong>Rutuja Patil</strong></p>
+    </div>
+  </footer>
+
+
+  <!-- MOBILE MENUBAR -->
+  <nav class="mobile-menubar" aria-label="Mobile menu">
+
+    <a href="index.html" class="mm-item" title="Home">
+      <i class="fa-solid fa-house"></i>
+    </a>
+
+    <a href="products.html" class="mm-item" title="Shop">
+      <i class="fa-solid fa-store"></i>
+    </a>
+
+    <a href="favourites.html" class="mm-item" title="Favourites">
+      <i class="fa-solid fa-heart"></i>
+      <span class="mm-badge" id="mm-fav-count">0</span>
+    </a>
+
+    <a href="cart.html" class="mm-item" title="Cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="mm-badge" id="mm-cart-count">0</span>
+    </a>
+
+    <a href="profile.html" class="mm-item" title="Profile">
+      <i class="fa-solid fa-user"></i>
+    </a>
+
+  </nav>
+
+
+  <!-- SCRIPTS - ORDER MATTERS! -->
+  <script>
+    const BACKEND_URL =
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1" ||
+      window.location.protocol === "file:"
+        ? "http://127.0.0.1:8000"
+        : "https://clothingstore-2-smeg.onrender.com";
+  </script>
+  <script src="static/js/auth.js"></script>
+  <script src="static/js/cart.js"></script>
+  <script src="static/js/favourites.js"></script>
+  <script src="static/js/main.js"></script>
+  <script src="static/js/product-detail.js"></script>
 
 </body>
-
 </html>
-
-<!-- MOBILE MENUBAR -->
-<nav class="mobile-menubar" aria-label="Mobile menu">
-    <a href="/index.html" class="mm-item" title="Home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
-    <a href="/products.html" class="mm-item" title="Shop" aria-label="Shop"><i class="fa-solid fa-store"></i></a>
-    <a href="/favourites.html" class="mm-item" title="Favourites" aria-label="Favourites"><i class="fa-solid fa-heart"></i><span class="mm-badge" id="mm-fav-count">0</span></a>
-    <a href="/cart.html" class="mm-item" title="Cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="mm-badge" id="mm-cart-count">0</span></a>
-    <a href="/profile.html" class="mm-item" title="Profile" aria-label="Profile"><i class="fa-solid fa-user"></i></a>
-</nav>

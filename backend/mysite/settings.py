@@ -79,13 +79,9 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
+    "https://mh24collection-frontend.onrender.com",
     "http://localhost:5500",
     "http://127.0.0.1:5500",
-    "https://clothingstore-2-smeg.onrender.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

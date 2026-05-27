@@ -1,40 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById("searchInput");
+
   if (!searchInput) return;
 
   const hero = document.querySelector(".hero-section");
   const categories = document.querySelector(".categories");
 
-  // 🔍 Live UI change while typing
-  searchInput.addEventListener("keyup", () => {
-    const input = searchInput.value.toLowerCase();
+  // ================= LIVE SEARCH UI =================
 
-    if (hero && categories) {
-      if (input.length > 0) {
-        hero.style.display = "none";
-        categories.style.display = "none";
-      } else {
-        hero.style.display = "";
-        categories.style.display = "";
-      }
+  searchInput.addEventListener("input", () => {
+
+    const input = searchInput.value.trim();
+
+    if (hero) {
+      hero.style.display = input ? "none" : "";
     }
+
+    if (categories) {
+      categories.style.display = input ? "none" : "";
+    }
+
   });
 
-  // 🔍 Redirect on Enter key
+  // ================= ENTER KEY SEARCH =================
+
   searchInput.addEventListener("keydown", (event) => {
+
     if (event.key === "Enter") {
+
+      event.preventDefault();
+
       goToSearch();
     }
+
   });
 
-  // 🔍 Search button click
+  // ================= SEARCH REDIRECT =================
+
   window.goToSearch = function () {
+
     const query = searchInput.value.trim();
 
-    if (query !== "") {
-      window.location.href = `products.html?search=${encodeURIComponent(query)}`;
-    }
+    if (!query) return;
+
+    window.location.href =
+      `/products.html?search=${encodeURIComponent(query)}`;
   };
 
 });

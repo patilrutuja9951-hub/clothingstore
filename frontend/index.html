@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>MH24 Collection | Streetwear</title>
+     <!-- KEEP THIS -->
+  <link rel="stylesheet" href="static/css/style.css">
 
-  <link rel="stylesheet" href="/static/css/style.css">
-
+  <!-- Font Awesome -->
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
+
 
 <body>
 
@@ -65,7 +67,7 @@
       <!-- SIGN IN -->
       <div class="nav-signin border">
 
-        <a href="/signin.html">
+        <a href="signin.html">
           <p><span>Hello, Sign in</span></p>
         </a>
 
@@ -74,7 +76,7 @@
       <!-- SHOP -->
       <div class="nav-favourites border">
 
-        <a href="/products.html">
+        <a href="products.html">
           Shop
         </a>
 
@@ -83,7 +85,7 @@
       <!-- FAVOURITES -->
       <div class="nav-favourites border">
 
-        <a href="/favourites.html">
+        <a href="favourites.html">
 
           <i class="fa-solid fa-heart"></i>
 
@@ -96,7 +98,7 @@
       <!-- CART -->
       <div class="nav-cart border">
 
-        <a href="/cart.html">
+        <a href="cart.html">
 
           <i class="fa-solid fa-cart-shopping"></i>
 
@@ -109,7 +111,7 @@
       <!-- PROFILE -->
       <div class="nav-profile border">
 
-        <a href="/profile.html">
+        <a href="profile.html">
 
           <i class="fa-solid fa-user"></i>
 
@@ -120,7 +122,7 @@
       <!-- HOME -->
       <div class="top-btn">
 
-        <a href="/index.html">
+        <a href="index.html">
 
           <i class="fa-solid fa-house"></i>
 
@@ -157,15 +159,15 @@
 
       <div class="slider">
 
-        <img src="/static/images/HERO.FINAL1.png"
+        <img src="static/images/HERO.FINAL1.png"
           class="slide active"
           alt="Hero Banner">
 
-        <img src="/static/images/heroslide1.png"
+        <img src="static/images/heroslide1.png"
           class="slide"
           alt="Streetwear Banner">
 
-        <img src="/static/images/herodenim.png"
+        <img src="static/images/herodenim.png"
           class="slide"
           alt="Denim Banner">
 
@@ -187,9 +189,9 @@
       <div class="category-container">
 
         <!-- MEN -->
-        <a href="/men.html?category=Men" class="category-card">
+        <a href="men.html?category=Men" class="category-card">
 
-          <img src="/static/images/men.png" alt="Men">
+          <img src="static/images/men.png" alt="Men">
 
           <div class="overlay">
 
@@ -201,9 +203,9 @@
         </a>
 
         <!-- WOMEN -->
-        <a href="/women.html?category=Women" class="category-card">
+        <a href="women.html?category=Women" class="category-card">
 
-          <img src="/static/images/women.png" alt="Women">
+          <img src="static/images/women.png" alt="Women">
 
           <div class="overlay">
 
@@ -215,9 +217,9 @@
         </a>
 
         <!-- OVERSIZED -->
-        <a href="/oversized.html?category=Oversized" class="category-card">
+        <a href="oversized.html?category=Oversized" class="category-card">
 
-          <img src="/static/images/oversized.png" alt="Oversized">
+          <img src="static/images/oversized.png" alt="Oversized">
 
           <div class="overlay">
 
@@ -272,10 +274,10 @@
       <h3>Quick Links</h3>
 
       <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/favourites.html">Favourites</a></li>
-        <li><a href="/products.html">Shop</a></li>
-        <li><a href="/cart.html">Cart</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="favourites.html">Favourites</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
       </ul>
     </div>
 
@@ -284,10 +286,10 @@
       <h3>Customer Support</h3>
 
       <ul>
-        <li><a href="/track-orders.html">Track Order</a></li>
-        <li><a href="/add_review.html">RATE US</a></li>
-        <li><a href="/signin.html">Sign In</a></li>
-        <li><a href="/profile.html">Profile</a></li>
+        <li><a href="track-orders.html">Track Order</a></li>
+        <li><a href="add_review.html">RATE US</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="profile.html">Profile</a></li>
       </ul>
     </div>
 
@@ -334,79 +336,15 @@
           Designed & Developed by <strong>Rutuja Patil</strong>
        </p>
   </div>
-      
 
-
-   
 </footer>
-
-
-  <!-- ================= SCRIPTS ================= -->
-
-  <script src="/static/js/products.js" defer></script>
-  <script src="/static/js/cart.js" defer></script>
-  <script src="/static/js/favourites.js" defer></script>
-  <script src="/static/js/search.js" defer></script>
-  <script src="/static/js/slider.js" defer></script>
-  <script src="/static/js/auth.js" defer></script>
-  <script src="/static/js/main.js" defer></script>
-
-  
-
-  <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const category = params.get('category');
-        const BACKEND = 'https://clothingstore-2-smeg.onrender.com';
-        let apiUrl = `${BACKEND}/api/products/`;
-        if (category) apiUrl += `?category=${encodeURIComponent(category)}`;
-
-        const res = await fetch(apiUrl);
-        if (!res.ok) return;
-        const data = await res.json();
-
-        const isHome = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '';
-        const items = isHome ? data.slice(0,4) : data;
-
-        const localMap = {
-          "STREETSTYLE LEATHER JACKET": "/static/images/leatherjacket.png",
-          "URBAN CARGO PANTS": "/static/images/cargo.png",
-          "MINIMAL WHITE TEE": "/static/images/whitetee.png",
-          "STREET HOODIE": "/static/images/hoodie.png",
-          "CHIC BOW TOP": "/static/images/rmbow_top.png",
-          "SUMMER BREEZE DRESS": "/static/images/summerbg.png",
-          "RED LEATHER STREET JACKET": "/static/images/red-removebg-preview.png",
-          "OVERSIZED GRAPHIC TEE": "/static/images/graphictee.png",
-          "LOOSE FIT SHIRT": "/static/images/loose_shirt.png"
-        };
-
-        const container = document.getElementById('product-container');
-        if (!container) return;
-
-        container.innerHTML = items.map(item => {
-          const img = item.image ? item.image : (localMap[item.name] || '/static/images/blacktee1.png');
-          return `
-            <div class="product-card" onclick="openDetail(${item.id})">
-              <img src="${img}" alt="${item.name}" onerror="this.onerror=null;this.src='/static/images/blacktee1.png'">
-              <h3>${item.name}</h3>
-              <p>₹${item.price}</p>
-              <div class="product-actions">
-                <button class="add-btn" onclick="addToCart(${item.id}, event)">Add To Cart</button>
-                <button class="fav-btn" onclick="toggleFav(event, ${item.id})"><i class="fa-regular fa-heart"></i></button>
-              </div>
-            </div>`;
-        }).join('');
-
-        if (typeof updateCartCount === 'function') updateCartCount();
-        if (typeof updateFavCount === 'function') updateFavCount();
-        if (typeof checkFavIcons === 'function') checkFavIcons();
-
-      } catch (err) {
-        console.error('Inline product render failed', err);
-      }
-    });
-  </script>
-
+    
+    <script src="static/js/main.js" defer></script>
+    <script src="static/js/auth.js" defer></script>
+    <script src="static/js/cart.js" defer></script>
+    <script src="static/js/favourites.js" defer></script>
+    <script src="static/js/products.js" defer></script>
+    <script src="static/js/slider.js" defer></script>
+    
 </body>
 </html>

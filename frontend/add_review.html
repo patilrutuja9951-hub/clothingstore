@@ -1,165 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Add Review</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+
+    <link rel="stylesheet" href="static/css/style.css">    
+
+
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #111, #222);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            color: #fff;
-        }
 
-        .review-container {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 15px;
-            width: 400px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-        }
-
-        select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 8px;
-            border-radius: 8px;
-            border: none;
-            outline: none;
-        }
-
-        textarea {
-            resize: none;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-            border: none;
-            border-radius: 8px;
-            background: #880b0b;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #f7c00b;
-        }
-    </style>
 </head>
 
-<body class="with-footer">
+<body>
 
-<div class="review-container">
-    <h2 id="review-title">Add Review</h2>
+    <div>
 
-    <label for="rating">Rating</label>
-    <select id="rating" name="rating">
-        <option value="">Select rating</option>
-        <option value="1">1 ⭐</option>
-        <option value="2">2 ⭐</option>
-        <option value="3">3 ⭐</option>
-        <option value="4">4 ⭐</option>
-        <option value="5">5 ⭐</option>
-    </select>
+        <h2>Add Review</h2>
 
-    <label for="comment">Comment</label>
-    <textarea id="comment" name="comment" rows="5" placeholder="Write your review..."></textarea>
+        <label for="rating">
+            Rating
+        </label>
 
-    <button id="submit-review">Submit Review</button>
-</div>
+        <select id="rating" name="rating">
 
-<script>
-const BACKEND_URL =
-  window.location.hostname === 'localhost' ||
-  window.location.hostname === '127.0.0.1'
-    ? 'http://127.0.0.1:8000'
-    : 'https://clothing-store-n0f6.onrender.com';
+            <option value="">
+                Select rating
+            </option>
 
-window.addEventListener("DOMContentLoaded", async () => {
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get("product_id") || params.get("id");
-    const title = document.getElementById("review-title");
+            <option value="1">
+                1 ⭐
+            </option>
 
-    if (!productId) {
-        title.innerText = "Add Review";
-        alert("Missing product ID.");
-        return;
-    }
+            <option value="2">
+                2 ⭐
+            </option>
 
-    try {
-        const response = await fetch(`${BACKEND_URL}/api/products/${productId}/`);
-        const product = await response.json();
-        if (product.name) {
-            title.innerText = `Add Review for ${product.name}`;
-        }
-    } catch (error) {
-        console.error("Could not load product details", error);
-    }
+            <option value="3">
+                3 ⭐
+            </option>
 
-    document.getElementById("submit-review").addEventListener("click", async () => {
-        const rating = document.getElementById("rating").value;
-        const comment = document.getElementById("comment").value;
+            <option value="4">
+                4 ⭐
+            </option>
 
-        if (!rating || !comment) {
-            alert("Please fill all fields");
-            return;
-        }
+            <option value="5">
+                5 ⭐
+            </option>
 
-        try {
-            const res = await fetch(`${BACKEND_URL}/api/add-review/${productId}/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ rating, comment })
-            });
+        </select>
 
-            const data = await res.json();
-            alert(data.message || data.error || "Review submitted.");
-            window.location.href = `product-detail.html?id=${productId}`;
-        } catch (err) {
-            console.error(err);
-            alert("Could not submit review.");
-        }
-    });
-});
-</script>
+        <label for="comment">
+            Comment
+        </label>
 
-<footer class="footer">
-    <div class="footer-container">
-        <p>© 2026 MH24Collection. All rights reserved.</p>
+        <textarea id="comment"
+                  name="comment"
+                  rows="5"
+                  placeholder="Write your review..."></textarea>
+
+        <button>
+            Submit Review
+        </button>
+
     </div>
-</footer>
 
+    <footer>
+
+        <div>
+
+            <p>© 2026 MH24Collection. All rights reserved.</p>
+
+        </div>
+
+    </footer>
+
+    <nav aria-label="Mobile menu">
+
+    <a href="index.html">
+        <i class="fa-solid fa-house"></i>
+    </a>
+
+    <a href="products.html">
+        <i class="fa-solid fa-store"></i>
+    </a>
+
+    <a href="favourites.html">
+        <i class="fa-solid fa-heart"></i>
+        <span>0</span>
+    </a>
+
+    <a href="cart.html">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>0</span>
+    </a>
+
+    <a href="profile.html">
+        <i class="fa-solid fa-user"></i>
+    </a>
+
+</nav>
+
+
+    <script src="static/js/main.js" defer></script>
+    <script src="static/js/auth.js" defer></script>
 </body>
+
 </html>
 
 <!-- MOBILE MENUBAR -->
-<nav class="mobile-menubar" aria-label="Mobile menu">
-    <a href="/index.html" class="mm-item" title="Home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
-    <a href="/products.html" class="mm-item" title="Shop" aria-label="Shop"><i class="fa-solid fa-store"></i></a>
-    <a href="/favourites.html" class="mm-item" title="Favourites" aria-label="Favourites"><i class="fa-solid fa-heart"></i><span class="mm-badge" id="mm-fav-count">0</span></a>
-    <a href="/cart.html" class="mm-item" title="Cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="mm-badge" id="mm-cart-count">0</span></a>
-    <a href="/profile.html" class="mm-item" title="Profile" aria-label="Profile"><i class="fa-solid fa-user"></i></a>
-</nav>
+

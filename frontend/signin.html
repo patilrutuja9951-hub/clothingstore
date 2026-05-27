@@ -1,73 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign In</title>
 
-    <link rel="stylesheet" href="/static/css/style.css">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Sign In | MH24 Collection</title>
+
+    <link rel="stylesheet"
+          href="static/css/style.css">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body class="with-footer">
 
-<section class="auth-page">
-    <div class="auth-container">
+    <!-- SIGN IN PAGE -->
 
-        <h2>WELCOME BACK</h2>
-        <p class="auth-sub">Sign in to continue</p>
+    <section class="auth-page">
 
-        <!-- EMAIL -->
-        <div class="input-box">
+        <div class="auth-container">
+
+            <!-- ICON -->
+
+            <div class="auth-logo">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <!-- TITLE -->
+
+            <h2>WELCOME BACK</h2>
+
+            <p class="auth-sub">
+                Sign in to continue shopping
+            </p>
+
+            <!-- EMAIL -->
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-user"></i>
+
+                <input type="email"
+                       id="email"
+                       placeholder="Email">
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input type="password"
+                       id="password"
+                       placeholder="Password">
+
+                <i class="fa-solid fa-eye"></i>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button class="auth-btn">
+
+                SIGN IN
+
+            </button>
+
+            <!-- SWITCH -->
+
+            <p class="auth-switch">
+
+                Don't have an account?
+
+                <a href="signup.html">
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- MOBILE MENUBAR -->
+
+    <nav class="mobile-menubar"
+         aria-label="Mobile menu">
+
+        <!-- HOME -->
+        <a href="index.html"
+           class="mm-item"
+           title="Home"
+           aria-label="Home">
+
+            <i class="fa-solid fa-house"></i>
+
+        </a>
+
+        <!-- SHOP -->
+        <a href="products.html"
+           class="mm-item"
+           title="Shop"
+           aria-label="Shop">
+
+            <i class="fa-solid fa-store"></i>
+
+        </a>
+
+        <!-- FAVOURITES -->
+        <a href="favourites.html"
+           class="mm-item"
+           title="Favourites"
+           aria-label="Favourites">
+
+            <i class="fa-solid fa-heart"></i>
+
+            <span class="mm-badge"
+                  id="mm-fav-count">0</span>
+
+        </a>
+
+        <!-- CART -->
+        <a href="cart.html"
+           class="mm-item"
+           title="Cart"
+           aria-label="Cart">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span class="mm-badge"
+                  id="mm-cart-count">0</span>
+
+        </a>
+
+        <!-- PROFILE -->
+        <a href="profile.html"
+           class="mm-item"
+           title="Profile"
+           aria-label="Profile">
+
             <i class="fa-solid fa-user"></i>
-            <input type="email" id="email" placeholder="Email">
-        </div>
 
-        <!-- PASSWORD -->
-        <div class="input-box">
-            <i class="fa-solid fa-lock"></i>
-            <input type="password" id="password" placeholder="Password">
-            <i class="fa-solid fa-eye" onclick="togglePassword()"></i>
-        </div>
+        </a>
 
-        <!-- BUTTON -->
-        <button class="auth-btn" onclick="loginUser()">
-            SIGN IN
-        </button>
+    </nav>
 
-        <p class="auth-switch">
-            Don't have an account?
-            <a href="/signup.html">Create Account</a>
-        </p>
+    <script src="static/js/auth.js" defer></script>
+    <script src="static/js/main.js" defer></script>
+    <script src="static/js/profile.js" defer></script>  
 
-    </div>
-</section>
+        <!-- MOBILE MENUBAR -->
 
-<!-- PASSWORD TOGGLE -->
-<script>
-function togglePassword() {
-    const pass = document.getElementById("password");
-    pass.type = pass.type === "password" ? "text" : "password";
-}
-</script>
 
-<script src="/static/js/auth.js" defer></script>
 
-<footer class="footer">
-    <div class="footer-container">
-        <p>© 2026 MH24Collection. All rights reserved.</p>
-    </div>
-</footer>
 
 </body>
-</html>
 
-<!-- MOBILE MENUBAR -->
-<nav class="mobile-menubar" aria-label="Mobile menu">
-    <a href="/index.html" class="mm-item" title="Home" aria-label="Home"><i class="fa-solid fa-house"></i></a>
-    <a href="/products.html" class="mm-item" title="Shop" aria-label="Shop"><i class="fa-solid fa-store"></i></a>
-    <a href="/favourites.html" class="mm-item" title="Favourites" aria-label="Favourites"><i class="fa-solid fa-heart"></i><span class="mm-badge" id="mm-fav-count">0</span></a>
-    <a href="/cart.html" class="mm-item" title="Cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="mm-badge" id="mm-cart-count">0</span></a>
-    <a href="/profile.html" class="mm-item" title="Profile" aria-label="Profile"><i class="fa-solid fa-user"></i></a>
-</nav>
+</html>
